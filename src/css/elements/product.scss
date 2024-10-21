@@ -1,0 +1,196 @@
+/*
+* Product
+*/
+.product {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+  /*
+    * Left side
+    */
+  &-image {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      @media (max-width: 600px) {
+        margin-top: 40px;
+      }
+    }
+  }
+  /*
+    * Right side
+    */
+  &-content {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 70px;
+    @media (max-width: 600px) {
+      padding: 16px;
+    }
+    &-breadcumbs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 58px;
+      margin-left: -20px;
+      @media (max-width: 600px) {
+        width: fit-content;
+        margin-left: 10px;
+        font-size: 12px;
+        position: absolute;
+        top: 95px;
+        left: 10px;
+      }
+    }
+    &-tag {
+      text-transform: uppercase;
+    }
+    &-line {
+      height: 1px;
+      background: var(--light-brown);
+    }
+    &-icon-text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        p {
+          color: var(--icon-text-color);
+          font-weight: 500;
+        }
+      }
+    }
+
+    &-radiobuttons {
+      display: grid;
+      gap: 20px;
+
+      label {
+        color: var(--text-color);
+        font-size: 16px;
+        opacity: 50%;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      input[type="radio"] {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        vertical-align: middle;
+        opacity: 0.5;
+        appearance: none;
+        border: 2px solid rgba(77, 77, 77, 0.5);
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+
+        &:checked {
+          opacity: 1;
+          border-color: var(--light-brown);
+        }
+
+        &:checked::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 12px;
+          height: 12px;
+          background-color: var(--light-brown);
+          border-radius: 50%;
+        }
+        &:checked ~ label {
+          color: var(--text-color);
+          opacity: 100%;
+        }
+      }
+    }
+
+    &-purchase {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      &-quantity {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--black);
+        width: 110px;
+        padding: 6px;
+
+        input[type="number"] {
+          background: transparent;
+          border: none;
+          text-align: center;
+          width: 100%;
+          font-size: 16px;
+
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            -webkit-appearance: none; /* Remove default styling */
+            margin: 0; /* No margin */
+          }
+        }
+
+        button {
+          font-size: 20px;
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+        }
+      }
+
+      .btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px 20px;
+        background: var(--btn-bg);
+        color: var(--text-color);
+        font-size: 16px;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        position: relative; /* Ensure positioning is relative */
+        overflow: hidden; /* Ensure no overflow from scaling */
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+/*
+* Cart animation
+*/
+.cart-notification {
+  position: fixed;
+  bottom: 10px;
+  right: -400px;
+  background-color: var(--btn-bg);
+  color: var(--white);
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+  z-index: 1000;
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &.show {
+    right: 10px;
+  }
+}

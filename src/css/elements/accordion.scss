@@ -1,0 +1,92 @@
+/*
+* Accordion
+*/
+.accordion {
+  width: 100%;
+  margin: 10px auto;
+  max-width: 1500px;
+  padding: 0 70px;
+  margin: 0 auto;
+  @media (max-width: 600px) {
+    padding: 16px;
+  }
+  &-container {
+    max-width: 670px;
+    list-style: none;
+
+    &-item {
+      article {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: all 5s ease-in-out;
+        overflow: hidden;
+
+        p {
+          text-wrap: revert;
+        }
+
+        button {
+          border: none;
+          text-align: start;
+          padding: 0;
+          inline-size: 100%;
+          padding-block: 1rlh;
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
+          background: transparent;
+          align-items: center;
+          p {
+            font-size: 20px;
+          }
+          .faq-icon {
+            .faq-bar {
+              width: 18px;
+              height: 2px;
+              background-color: var(--text-color);
+              transition: all 0.3s ease;
+
+              &.faq-bar-1 {
+                transform: rotate(90deg);
+              }
+              &.faq-bar-2 {
+                margin-top: -1.2px;
+              }
+            }
+          }
+          &[aria-expanded="true"] .faq-bar-1 {
+            opacity: 0;
+          }
+        }
+
+        &:has(button[aria-expanded="true"]) .answer {
+          display: grid;
+          grid-template-rows: 1fr;
+        }
+
+        .answer {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 0.4s ease-in-out;
+
+          .answer-content {
+            overflow: hidden;
+            border-bottom: 1px solid var(--light-brown);
+            p {
+              font-weight: normal;
+              padding-bottom: 20px;
+            }
+          }
+
+          > * + * {
+            margin-top: 1em;
+          }
+
+          .link-block {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

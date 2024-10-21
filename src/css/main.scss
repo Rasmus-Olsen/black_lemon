@@ -1,0 +1,34 @@
+/*
+* Reset
+*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+
+  --text-color: #4d4d4d;
+  --light-brown: #9f938b;
+  --btn-bg: #bfabab;
+  --white: #fff;
+  --black: #000;
+  --icon-text-color: #948282;
+}
+
+h1,
+.h1 {
+  font-size: 28px;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+p {
+  color: var(--text-color);
+  font-weight: 300;
+}
+
+@import "./elements/accordion.scss";
+@import "./elements/header.scss";
+@import "./elements/product.scss";
+@import "./elements/slider.scss";

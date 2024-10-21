@@ -1,0 +1,14 @@
+footer {
+  height: 210px;
+  position: relative;
+  @media (max-width: 600px) {
+    height: 100px;
+  }
+  .background-box {
+    background: #f6f6f5;
+    height: 100%;
+    position: absolute;
+    width: 540px;
+    right: 0;
+  }
+}
