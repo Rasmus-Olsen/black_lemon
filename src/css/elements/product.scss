@@ -37,6 +37,10 @@
       gap: 10px;
       margin-bottom: 58px;
       margin-left: -20px;
+
+      img {
+        object-fit: contain;
+      }
       @media (max-width: 600px) {
         width: fit-content;
         margin-left: 10px;

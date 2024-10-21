@@ -624,14 +624,20 @@ accordionWrappers.forEach((accordionWrapper)=>{
         button.setAttribute("aria-expanded", !expanded);
     });
 });
-document.addEventListener("DOMContentLoaded", ()=>{
+/*
+ * Slider
+ */ document.addEventListener("DOMContentLoaded", ()=>{
     const container = document.querySelector(".scrolling");
     const leftButton = document.getElementById("scroll-left");
     const rightButton = document.getElementById("scroll-right");
     const scrollAmount = 450; // Width of each card plus the margin
-    // Allow vertical scrolling but prevent horizontal scrolling
+    // Prevent any kind of scrolling with the mouse
     container.addEventListener("wheel", (event)=>{
-        if (event.deltaX !== 0) event.preventDefault(); // Prevent default for horizontal scrolling
+        event.preventDefault(); // Prevent default behavior for all wheel events
+    });
+    // Prevent dragging from scrolling the container
+    container.addEventListener("mousedown", (event)=>{
+        event.preventDefault(); // Prevent default behavior for mouse down events
     });
     leftButton.addEventListener("click", ()=>{
         container.scrollBy({

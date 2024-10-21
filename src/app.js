@@ -58,6 +58,9 @@ accordionWrappers.forEach((accordionWrapper) => {
   });
 });
 
+/*
+ * Slider
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".scrolling");
   const leftButton = document.getElementById("scroll-left");
@@ -65,11 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const scrollAmount = 450; // Width of each card plus the margin
 
-  // Allow vertical scrolling but prevent horizontal scrolling
+  // Prevent horizontal scrolling with the mouse
   container.addEventListener("wheel", (event) => {
     if (event.deltaX !== 0) {
-      event.preventDefault(); // Prevent default for horizontal scrolling
+      event.preventDefault(); // Prevent default behavior for horizontal scrolling
     }
+  });
+
+  // Prevent horizontal dragging
+  container.addEventListener("mousedown", (event) => {
+    event.preventDefault(); // Prevent default behavior for dragging
   });
 
   leftButton.addEventListener("click", () => {
