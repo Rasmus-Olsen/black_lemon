@@ -1,3 +1,9 @@
+@use "./css/elements/accordion.scss";
+@use "./css/elements/header.scss";
+@use "./css/elements/product.scss";
+@use "./css/elements/slider.scss";
+@use "./css/elements/footer.scss";
+
 /*
 * Reset
 */
@@ -27,9 +33,3 @@ p {
   color: var(--text-color);
   font-weight: 300;
 }
-
-@import "./css/elements/accordion.scss";
-@import "./css/elements/header.scss";
-@import "./css/elements/product.scss";
-@import "./css/elements/slider.scss";
-@import "./css/elements/footer.scss";
