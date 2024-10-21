@@ -593,6 +593,68 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
         header.classList.toggle("menu-opened");
     });
 });
+/*
+ * Purchase
+ */ document.querySelector(".plus-btn").addEventListener("click", function() {
+    let quantityInput = document.getElementById("quantity");
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+});
+document.querySelector(".minus-btn").addEventListener("click", function() {
+    let quantityInput = document.getElementById("quantity");
+    if (parseInt(quantityInput.value) > 1) quantityInput.value = parseInt(quantityInput.value) - 1;
+});
+/*
+ * Accordion
+ */ const accordionWrappers = document.querySelectorAll(".accordion");
+accordionWrappers.forEach((accordionWrapper)=>{
+    accordionWrapper.addEventListener("click", (event)=>{
+        const button = event.target;
+        const article = button.closest("article");
+        const exclusive = accordionWrapper.dataset.exclusive;
+        // Ensure a button was clicked and that it is within an article
+        if (!article || button.tagName.toLowerCase() !== "button") return;
+        const expanded = button.getAttribute("aria-expanded") === "true" || false;
+        // Handle exclusive expansion
+        if (exclusive === "true") {
+            const currentExpanded = accordionWrapper.querySelector('[aria-expanded="true"]');
+            // Collapse the currently expanded button if it is not the clicked button
+            if (currentExpanded && currentExpanded !== button) currentExpanded.setAttribute("aria-expanded", "false");
+        }
+        // Toggle the aria-expanded state of the clicked button
+        button.setAttribute("aria-expanded", !expanded);
+    });
+});
+document.addEventListener("DOMContentLoaded", ()=>{
+    const container = document.querySelector(".scrolling");
+    const leftButton = document.getElementById("scroll-left");
+    const rightButton = document.getElementById("scroll-right");
+    const scrollAmount = 450; // Width of each card plus the margin
+    // Allow vertical scrolling but prevent horizontal scrolling
+    container.addEventListener("wheel", (event)=>{
+        if (event.deltaX !== 0) event.preventDefault(); // Prevent default for horizontal scrolling
+    });
+    leftButton.addEventListener("click", ()=>{
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+        }); // Scroll left by one card
+    });
+    rightButton.addEventListener("click", ()=>{
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+        }); // Scroll right by one card
+    });
+});
+/*
+ * Cart
+ */ document.querySelector(".btn").addEventListener("click", function() {
+    const notification = document.querySelector(".cart-notification");
+    notification.classList.add("show");
+    setTimeout(()=>{
+        notification.classList.remove("show");
+    }, 2000);
+});
 
 },{}]},["2L15i","dV6cC"], "dV6cC", "parcelRequire6776")
 

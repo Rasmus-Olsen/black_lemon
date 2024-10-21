@@ -627,24 +627,15 @@ accordionWrappers.forEach((accordionWrapper)=>{
 /*
  * Slider
  */ document.addEventListener("DOMContentLoaded", ()=>{
-    const container = document.querySelector(".scrolling");
+    const container = document.querySelector(".scrolling ul");
     const leftButton = document.getElementById("scroll-left");
     const rightButton = document.getElementById("scroll-right");
     const scrollAmount = 450; // Width of each card plus the margin
-    // Removes scrolling...
+    // Removes horizontal scrolling only
     container.addEventListener("wheel", (event)=>{
         if (event.deltaX !== 0) // Check if the scroll is horizontal
         event.preventDefault();
     });
-    // Funktion til at scrolle til det angivne indeks
-    const scrollToIndex = (index)=>{
-        if (index < 0 || index >= items.length) return; // Sikrer, at vi ikke går udenfor rækkevidde
-        items[index].scrollIntoView({
-            behavior: "smooth",
-            inline: "start"
-        });
-        currentIndex = index; // Opdaterer det aktuelle indeks
-    };
     leftButton.addEventListener("click", ()=>{
         container.scrollBy({
             left: -scrollAmount,
